@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://6asbx7w8ieso"]
+[gd_scene load_steps=22 format=3 uid="uid://6asbx7w8ieso"]
 
 [ext_resource type="Script" uid="uid://c0ldmrdy0dlrw" path="res://Scenes/ShootableNPC/shootable_npc.gd" id="1_7gwyk"]
 [ext_resource type="Script" uid="uid://c648tla2l1a3r" path="res://Components/HealthComponent/HealthComponent.gd" id="1_tu1ms"]
@@ -11,25 +11,16 @@
 [ext_resource type="Script" uid="uid://3dvutehexmwh" path="res://Scenes/ShootableNPC/States/idle.gd" id="6_7gwyk"]
 [ext_resource type="Script" uid="uid://x37rqikw4t8v" path="res://Scenes/ShootableNPC/States/fleeing.gd" id="8_teoae"]
 [ext_resource type="Script" uid="uid://btxb2333k6tgn" path="res://Scenes/ShootableNPC/States/dying.gd" id="9_teoae"]
+[ext_resource type="Script" uid="uid://c3k6hd8suua7a" path="res://Scenes/ShootableNPC/States/wandering.gd" id="10_43ra8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wih37"]
 size = Vector2(56, 84)
 
-[sub_resource type="Animation" id="Animation_teoae"]
-resource_name = "idle"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3]
-}
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6od15"]
+size = Vector2(60, 42)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6gfxk"]
+size = Vector2(675, 200)
 
 [sub_resource type="Animation" id="Animation_o6560"]
 length = 0.001
@@ -56,39 +47,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_fsudy"]
-resource_name = "walk"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1667, 0.3333, 0.5, 0.6667, 0.8333),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [8, 9, 10, 11, 12, 13]
-}
-
-[sub_resource type="Animation" id="Animation_43ra8"]
-resource_name = "run"
-length = 0.75
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [16, 17, 18, 19, 20, 21]
 }
 
 [sub_resource type="Animation" id="Animation_8xgi6"]
@@ -118,6 +76,55 @@ tracks/1/keys = {
 "values": [true, false]
 }
 
+[sub_resource type="Animation" id="Animation_teoae"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_43ra8"]
+resource_name = "run"
+length = 0.75
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [16, 17, 18, 19, 20, 21]
+}
+
+[sub_resource type="Animation" id="Animation_fsudy"]
+resource_name = "walk"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1667, 0.3333, 0.5, 0.6667, 0.8333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11, 12, 13]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fsudy"]
 _data = {
 &"RESET": SubResource("Animation_o6560"),
@@ -127,46 +134,26 @@ _data = {
 &"walk": SubResource("Animation_fsudy")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6od15"]
-size = Vector2(60, 42)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6gfxk"]
-size = Vector2(675, 200)
-
 [node name="ShootableNPC" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_7gwyk")
 sprite_options = Array[Texture2D]([ExtResource("2_fsudy"), ExtResource("3_43ra8"), ExtResource("3_teoae")])
 
-[node name="HealthComponent" type="Node" parent="."]
-script = ExtResource("1_tu1ms")
-max_health = 1
-metadata/_custom_type_script = "uid://c648tla2l1a3r"
-
 [node name="PhysicsCollider" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource("RectangleShape2D_wih37")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-unique_name_in_owner = true
-scale = Vector2(3, 3)
-texture = ExtResource("3_teoae")
-hframes = 8
-vframes = 4
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
-unique_name_in_owner = true
-libraries = {
-&"": SubResource("AnimationLibrary_fsudy")
-}
-autoplay = "idle"
 
 [node name="FreeNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 rect = Rect2(-50, -50, 100, 100)
 show_rect = false
 script = ExtResource("3_6gfxk")
 metadata/_custom_type_script = "uid://x23jddk8rue6"
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("1_tu1ms")
+max_health = 1
+metadata/_custom_type_script = "uid://c648tla2l1a3r"
 
 [node name="Hurtbox2D" type="Area2D" parent="." node_paths=PackedStringArray("health")]
 unique_name_in_owner = true
@@ -192,6 +179,20 @@ position = Vector2(0, -75)
 shape = SubResource("RectangleShape2D_6gfxk")
 debug_color = Color(0.61960787, 0.53333336, 0, 0.12156863)
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+scale = Vector2(3, 3)
+texture = ExtResource("3_teoae")
+hframes = 8
+vframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_fsudy")
+}
+autoplay = "idle"
+
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("controlled_node", "initial_state")]
 script = ExtResource("5_tvcwg")
 controlled_node = NodePath("..")
@@ -200,7 +201,16 @@ metadata/_custom_type_script = "uid://bnuyec0xe7i0k"
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("6_7gwyk")
+idle_min_time = 0.5
+idle_max_time = 0.8
 state_name = "idle"
+metadata/_custom_type_script = "uid://xmr3p4wrraye"
+
+[node name="Wandering" type="Node" parent="StateMachine"]
+script = ExtResource("10_43ra8")
+wander_min_time = 0.5
+wander_max_time = 0.8
+state_name = "wandering"
 metadata/_custom_type_script = "uid://xmr3p4wrraye"
 
 [node name="Fleeing" type="Node" parent="StateMachine"]
@@ -217,4 +227,6 @@ metadata/_custom_type_script = "uid://xmr3p4wrraye"
 
 [connection signal="died" from="HealthComponent" to="StateMachine" method="_on_health_component_died"]
 [connection signal="area_entered" from="HazardDetector" to="StateMachine/Idle" method="_on_hazard_detector_area_entered"]
+[connection signal="area_entered" from="HazardDetector" to="StateMachine/Wandering" method="_on_hazard_detector_area_entered"]
 [connection signal="body_entered" from="HazardDetector" to="StateMachine/Idle" method="_on_hazard_detector_body_entered"]
+[connection signal="body_entered" from="HazardDetector" to="StateMachine/Wandering" method="_on_hazard_detector_body_entered"]

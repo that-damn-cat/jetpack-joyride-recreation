@@ -7,10 +7,10 @@ extends State
 var flee_speed : float = 0.0
 
 func enter() -> void:
+	%AnimationPlayer.play("run")
+
 	flee_speed = randf_range(min_flee_speed, max_flee_speed)
 	flee_speed *= [-1, 1].pick_random()
-
-	%AnimationPlayer.play("run")
 
 	if flee_speed < 0:
 		%Sprite2D.flip_h = true
