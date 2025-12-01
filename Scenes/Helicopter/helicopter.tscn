@@ -11,6 +11,7 @@
 size = Vector2(198, 72)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hmewc"]
+radius = 38.58
 
 [node name="Helicopter" type="Area2D" node_paths=PackedStringArray("cooldown_timer", "spawn_position", "health")]
 collision_layer = 64
@@ -59,7 +60,7 @@ target_position = Vector2(-538, 533)
 max_results = 1
 
 [node name="ShotCooldown" type="Timer" parent="."]
-wait_time = 0.2
+wait_time = 0.25
 
 [connection signal="damaged" from="HealthComponent" to="." method="_on_health_component_damaged"]
 [connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]
