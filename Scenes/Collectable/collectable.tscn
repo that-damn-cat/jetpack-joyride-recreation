@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://dylelei5opgrw"]
+
+[ext_resource type="SpriteFrames" uid="uid://ckrh5gon7iguo" path="res://Scenes/Collectable/Assets/coin_frames.tres" id="1_sbuda"]
+[ext_resource type="Script" uid="uid://d1rmxsc34xtv" path="res://Scenes/Collectable/collectable.gd" id="1_y1mi7"]
+[ext_resource type="Script" uid="uid://cgj3mt04h6em8" path="res://Components/AudioJitterPlayer/AudioJitterPlayer.gd" id="3_bhxhe"]
+[ext_resource type="AudioStream" uid="uid://mxxxc3m5f6nj" path="res://Scenes/Collectable/Assets/CoinSound.wav" id="3_ctquu"]
+[ext_resource type="Script" uid="uid://x23jddk8rue6" path="res://Components/FreeNotifier2D/FreeNotifier2D.gd" id="5_rd83x"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sbuda"]
+radius = 28.160255
+
+[node name="Collectable" type="Area2D"]
+collision_layer = 32
+script = ExtResource("1_y1mi7")
+
+[node name="Animation" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+scale = Vector2(3, 3)
+sprite_frames = ExtResource("1_sbuda")
+frame_progress = 0.4215686
+
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_sbuda")
+
+[node name="CollectSFX" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_ctquu")
+volume_db = -6.0
+script = ExtResource("3_bhxhe")
+jitter = 0.04
+base_pitch_scale = 1.1
+metadata/_custom_type_script = "uid://cgj3mt04h6em8"
+
+[node name="FreeNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+unique_name_in_owner = true
+rect = Rect2(-28, -28, 56, 56)
+script = ExtResource("5_rd83x")
+metadata/_custom_type_script = "uid://x23jddk8rue6"
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="finished" from="CollectSFX" to="." method="_on_collect_sfx_finished"]

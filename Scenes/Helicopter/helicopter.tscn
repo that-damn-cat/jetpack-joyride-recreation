@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=3 uid="uid://d4deqnfditbxy"]
+
+[ext_resource type="Script" uid="uid://cmw31o7woemed" path="res://Scenes/Helicopter/helicopter.gd" id="1_kafbh"]
+[ext_resource type="PackedScene" uid="uid://cvlwvmkx273sv" path="res://Scenes/Bullet/bullet.tscn" id="2_4uwi5"]
+[ext_resource type="Script" uid="uid://x23jddk8rue6" path="res://Components/FreeNotifier2D/FreeNotifier2D.gd" id="3_1a8gy"]
+[ext_resource type="Texture2D" uid="uid://cja5fl1pe5hcy" path="res://icon.svg" id="3_06h7d"]
+[ext_resource type="Script" uid="uid://c648tla2l1a3r" path="res://Components/HealthComponent/HealthComponent.gd" id="4_38253"]
+[ext_resource type="Script" uid="uid://b0t6j7npbw78g" path="res://Components/Hitbox2D/Hitbox2D.gd" id="5_tsljw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0mevm"]
+size = Vector2(198, 72)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hmewc"]
+
+[node name="Helicopter" type="Area2D" node_paths=PackedStringArray("cooldown_timer", "spawn_position", "health")]
+collision_layer = 64
+collision_mask = 8
+script = ExtResource("1_kafbh")
+bullet_scene = ExtResource("2_4uwi5")
+cooldown_timer = NodePath("ShotCooldown")
+spawn_position = NodePath("BulletSpawn")
+health = NodePath("HealthComponent")
+metadata/_custom_type_script = "uid://deho6lgc8wgao"
+
+[node name="FreeNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+script = ExtResource("3_1a8gy")
+metadata/_custom_type_script = "uid://x23jddk8rue6"
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("4_38253")
+max_health = 5
+metadata/_custom_type_script = "uid://c648tla2l1a3r"
+
+[node name="Hitbox2D" type="Area2D" parent="."]
+script = ExtResource("5_tsljw")
+damage = 1
+metadata/_custom_type_script = "uid://b0t6j7npbw78g"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox2D"]
+visible = false
+shape = SubResource("RectangleShape2D_0mevm")
+debug_color = Color(0.95669776, 9.62615e-08, 0.53913414, 0.41960785)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.53125, 0.546875)
+texture = ExtResource("3_06h7d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_0mevm")
+debug_color = Color(0.95669776, 9.62615e-08, 0.53913414, 0.41960785)
+
+[node name="BulletSpawn" type="Marker2D" parent="."]
+position = Vector2(-76.000015, 20)
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="BulletSpawn"]
+unique_name_in_owner = true
+shape = SubResource("CircleShape2D_hmewc")
+target_position = Vector2(-538, 533)
+max_results = 1
+
+[node name="ShotCooldown" type="Timer" parent="."]
+wait_time = 0.2
+
+[connection signal="damaged" from="HealthComponent" to="." method="_on_health_component_damaged"]
+[connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]

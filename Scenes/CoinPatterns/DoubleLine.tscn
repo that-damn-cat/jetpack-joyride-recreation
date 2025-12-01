@@ -1,0 +1,101 @@
+[gd_scene load_steps=2 format=3 uid="uid://c52es1o87yss6"]
+
+[ext_resource type="PackedScene" uid="uid://dylelei5opgrw" path="res://Scenes/Collectable/collectable.tscn" id="1_mqtfs"]
+
+[node name="BlockPattern" type="Node2D"]
+
+[node name="Collectable" parent="." instance=ExtResource("1_mqtfs")]
+position = Vector2(216, 120)
+
+[node name="Collectable4" parent="." instance=ExtResource("1_mqtfs")]
+position = Vector2(216, 456)
+
+[node name="Collectable5" parent="." instance=ExtResource("1_mqtfs")]
+position = Vector2(264, 120)
+
+[node name="Collectable8" parent="." instance=ExtResource("1_mqtfs")]
+position = Vector2(264, 456)
+
+[node name="Collectable9" parent="." instance=ExtResource("1_mqtfs")]
+position = Vector2(312, 120)
+
+[node name="Collectable12" parent="." instance=ExtResource("1_mqtfs")]
+position = Vector2(312, 456)
+
+[node name="Collectable13" parent="." instance=ExtResource("1_mqtfs")]
+position = Vector2(360, 120)
+
+[node name="Collectable16" parent="." instance=ExtResource("1_mqtfs")]
+position = Vector2(360, 456)
+
+[node name="Collectable17" parent="." instance=ExtResource("1_mqtfs")]
+position = Vector2(408, 120)
+
+[node name="Collectable20" parent="." instance=ExtResource("1_mqtfs")]
+position = Vector2(408, 456)
+
+[node name="Collectable21" parent="." instance=ExtResource("1_mqtfs")]
+position = Vector2(456, 120)
+
+[node name="Collectable24" parent="." instance=ExtResource("1_mqtfs")]
+position = Vector2(456, 456)
+
+[node name="Collectable25" parent="." instance=ExtResource("1_mqtfs")]
+position = Vector2(504, 120)
+
+[node name="Collectable28" parent="." instance=ExtResource("1_mqtfs")]
+position = Vector2(504, 456)
+
+[node name="Collectable29" parent="." instance=ExtResource("1_mqtfs")]
+position = Vector2(552, 120)
+
+[node name="Collectable32" parent="." instance=ExtResource("1_mqtfs")]
+position = Vector2(552, 456)
+
+[node name="Collectable33" parent="." instance=ExtResource("1_mqtfs")]
+position = Vector2(600, 120)
+
+[node name="Collectable36" parent="." instance=ExtResource("1_mqtfs")]
+position = Vector2(600, 456)
+
+[node name="Collectable37" parent="." instance=ExtResource("1_mqtfs")]
+position = Vector2(648, 120)
+
+[node name="Collectable40" parent="." instance=ExtResource("1_mqtfs")]
+position = Vector2(648, 456)
+
+[node name="Collectable41" parent="." instance=ExtResource("1_mqtfs")]
+position = Vector2(696, 120)
+
+[node name="Collectable44" parent="." instance=ExtResource("1_mqtfs")]
+position = Vector2(696, 456)
+
+[node name="Collectable45" parent="." instance=ExtResource("1_mqtfs")]
+position = Vector2(744, 120)
+
+[node name="Collectable48" parent="." instance=ExtResource("1_mqtfs")]
+position = Vector2(744, 456)
+
+[node name="Collectable49" parent="." instance=ExtResource("1_mqtfs")]
+position = Vector2(792, 120)
+
+[node name="Collectable52" parent="." instance=ExtResource("1_mqtfs")]
+position = Vector2(792, 456)
+
+[node name="Collectable53" parent="." instance=ExtResource("1_mqtfs")]
+position = Vector2(840, 120)
+
+[node name="Collectable56" parent="." instance=ExtResource("1_mqtfs")]
+position = Vector2(840, 456)
+
+[node name="Collectable57" parent="." instance=ExtResource("1_mqtfs")]
+position = Vector2(888, 120)
+
+[node name="Collectable60" parent="." instance=ExtResource("1_mqtfs")]
+position = Vector2(888, 456)
+
+[node name="Collectable61" parent="." instance=ExtResource("1_mqtfs")]
+position = Vector2(936, 120)
+
+[node name="Collectable64" parent="." instance=ExtResource("1_mqtfs")]
+position = Vector2(936, 456)

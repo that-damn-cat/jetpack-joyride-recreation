@@ -1,0 +1,81 @@
+[gd_scene load_steps=10 format=3 uid="uid://cvlwvmkx273sv"]
+
+[ext_resource type="Texture2D" uid="uid://ffj2fw67sv6l" path="res://Scenes/Bullet/Assets/AutocannonBullet.png" id="1_k7rnr"]
+[ext_resource type="Script" uid="uid://d0mjxgjhrjs6s" path="res://Scenes/Bullet/bullet.gd" id="1_lv0gj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lv0gj"]
+atlas = ExtResource("1_k7rnr")
+region = Rect2(0, 0, 10, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nt0l2"]
+atlas = ExtResource("1_k7rnr")
+region = Rect2(10, 0, 10, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0gc84"]
+atlas = ExtResource("1_k7rnr")
+region = Rect2(20, 0, 10, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q443p"]
+atlas = ExtResource("1_k7rnr")
+region = Rect2(30, 0, 10, 17)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_anrnm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lv0gj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nt0l2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0gc84")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q443p")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k7rnr"]
+radius = 13.0
+height = 36.0
+
+[sub_resource type="SeparationRayShape2D" id="SeparationRayShape2D_lv0gj"]
+length = 21.0
+
+[node name="Bullet" type="Area2D"]
+top_level = true
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("1_lv0gj")
+damage = 1
+metadata/_custom_type_script = "uid://b0t6j7npbw78g"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = 1.5707964
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_anrnm")
+autoplay = "default"
+frame_progress = 0.44553044
+
+[node name="BulletCollision" type="CollisionShape2D" parent="."]
+position = Vector2(3, 0)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_k7rnr")
+
+[node name="FloorCollision" type="Area2D" parent="."]
+rotation = 1.5707964
+scale = Vector2(2, 2)
+collision_layer = 8
+collision_mask = 2
+
+[node name="FloorEarlyCollider" type="CollisionShape2D" parent="FloorCollision"]
+position = Vector2(1.09278446e-07, 2.5)
+rotation = 3.1415927
+shape = SubResource("SeparationRayShape2D_lv0gj")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="FloorCollision" to="." method="_on_floor_collision_body_entered"]

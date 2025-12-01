@@ -1,0 +1,18 @@
+[gd_scene load_steps=8 format=3 uid="uid://c5s1d14jlnsj1"]
+
+[ext_resource type="PackedScene" uid="uid://q80cwcuxc71" path="res://Components/ParallaxShuffler/ParallaxShuffler.tscn" id="1_6kua0"]
+[ext_resource type="Texture2D" uid="uid://cjhu24dwh8y27" path="res://Scenes/BGLayers/Assets/Layer3/1.png" id="2_2uxui"]
+[ext_resource type="Texture2D" uid="uid://c6q1fdry4p4iv" path="res://Scenes/BGLayers/Assets/Layer3/2.png" id="3_004cy"]
+[ext_resource type="Texture2D" uid="uid://cpfv2hf6o8q13" path="res://Scenes/BGLayers/Assets/Layer3/3.png" id="4_w6w5m"]
+[ext_resource type="Texture2D" uid="uid://cr7hlsm4d2s42" path="res://Scenes/BGLayers/Assets/Layer3/4.png" id="5_bxpyd"]
+[ext_resource type="Texture2D" uid="uid://byue4rgi8scc2" path="res://Scenes/BGLayers/Assets/Layer3/5.png" id="6_6ax8m"]
+[ext_resource type="Texture2D" uid="uid://rev2lf1fetdp" path="res://Scenes/BGLayers/Assets/Layer3/6.png" id="7_wpaka"]
+
+[node name="Layer3" instance=ExtResource("1_6kua0")]
+textures = Array[Texture2D]([ExtResource("2_2uxui"), ExtResource("3_004cy"), ExtResource("4_w6w5m"), ExtResource("5_bxpyd"), ExtResource("6_6ax8m"), ExtResource("7_wpaka")])
+
+[node name="LeftLayer" parent="." index="0"]
+texture = ExtResource("2_2uxui")
+
+[node name="RightLayer" parent="." index="1"]
+texture = ExtResource("3_004cy")

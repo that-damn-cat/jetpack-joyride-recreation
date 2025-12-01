@@ -1,0 +1,20 @@
+[gd_scene load_steps=10 format=3 uid="uid://rcph4m8au7qk"]
+
+[ext_resource type="PackedScene" uid="uid://q80cwcuxc71" path="res://Components/ParallaxShuffler/ParallaxShuffler.tscn" id="1_mt16y"]
+[ext_resource type="Texture2D" uid="uid://un014a81cfwf" path="res://Scenes/BGLayers/Assets/Layer2/1.png" id="2_w6806"]
+[ext_resource type="Texture2D" uid="uid://cnr5pffg1q4fo" path="res://Scenes/BGLayers/Assets/Layer2/2.png" id="3_olome"]
+[ext_resource type="Texture2D" uid="uid://cue2xjdldv4mj" path="res://Scenes/BGLayers/Assets/Layer2/3.png" id="4_1medf"]
+[ext_resource type="Texture2D" uid="uid://cagrcfx837boq" path="res://Scenes/BGLayers/Assets/Layer2/4.png" id="5_41k5t"]
+[ext_resource type="Texture2D" uid="uid://bsbu3qxanoxy2" path="res://Scenes/BGLayers/Assets/Layer2/5.png" id="6_l550y"]
+[ext_resource type="Texture2D" uid="uid://cr35xbiqobv6f" path="res://Scenes/BGLayers/Assets/Layer2/6.png" id="7_a1tdn"]
+[ext_resource type="Texture2D" uid="uid://wulxkbel1ifq" path="res://Scenes/BGLayers/Assets/Layer2/7.png" id="8_ox5r4"]
+[ext_resource type="Texture2D" uid="uid://bv6djrr5anxsc" path="res://Scenes/BGLayers/Assets/Layer2/8.png" id="9_irrnp"]
+
+[node name="Layer2" instance=ExtResource("1_mt16y")]
+textures = Array[Texture2D]([ExtResource("2_w6806"), ExtResource("3_olome"), ExtResource("4_1medf"), ExtResource("5_41k5t"), ExtResource("6_l550y"), ExtResource("7_a1tdn"), ExtResource("8_ox5r4"), ExtResource("9_irrnp")])
+
+[node name="LeftLayer" parent="." index="0"]
+texture = ExtResource("2_w6806")
+
+[node name="RightLayer" parent="." index="1"]
+texture = ExtResource("3_olome")

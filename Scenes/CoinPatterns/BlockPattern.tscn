@@ -1,0 +1,197 @@
+[gd_scene load_steps=2 format=3 uid="uid://f044b8otmeto"]
+
+[ext_resource type="PackedScene" uid="uid://dylelei5opgrw" path="res://Scenes/Collectable/collectable.tscn" id="1_vu6dt"]
+
+[node name="BlockPattern" type="Node2D"]
+
+[node name="Collectable" parent="." instance=ExtResource("1_vu6dt")]
+position = Vector2(216, 216)
+
+[node name="Collectable2" parent="." instance=ExtResource("1_vu6dt")]
+position = Vector2(216, 264)
+
+[node name="Collectable3" parent="." instance=ExtResource("1_vu6dt")]
+position = Vector2(216, 312)
+
+[node name="Collectable4" parent="." instance=ExtResource("1_vu6dt")]
+position = Vector2(216, 360)
+
+[node name="Collectable5" parent="." instance=ExtResource("1_vu6dt")]
+position = Vector2(264, 216)
+
+[node name="Collectable6" parent="." instance=ExtResource("1_vu6dt")]
+position = Vector2(264, 264)
+
+[node name="Collectable7" parent="." instance=ExtResource("1_vu6dt")]
+position = Vector2(264, 312)
+
+[node name="Collectable8" parent="." instance=ExtResource("1_vu6dt")]
+position = Vector2(264, 360)
+
+[node name="Collectable9" parent="." instance=ExtResource("1_vu6dt")]
+position = Vector2(312, 216)
+
+[node name="Collectable10" parent="." instance=ExtResource("1_vu6dt")]
+position = Vector2(312, 264)
+
+[node name="Collectable11" parent="." instance=ExtResource("1_vu6dt")]
+position = Vector2(312, 312)
+
+[node name="Collectable12" parent="." instance=ExtResource("1_vu6dt")]
+position = Vector2(312, 360)
+
+[node name="Collectable13" parent="." instance=ExtResource("1_vu6dt")]
+position = Vector2(360, 216)
+
+[node name="Collectable14" parent="." instance=ExtResource("1_vu6dt")]
+position = Vector2(360, 264)
+
+[node name="Collectable15" parent="." instance=ExtResource("1_vu6dt")]
+position = Vector2(360, 312)
+
+[node name="Collectable16" parent="." instance=ExtResource("1_vu6dt")]
+position = Vector2(360, 360)
+
+[node name="Collectable17" parent="." instance=ExtResource("1_vu6dt")]
+position = Vector2(408, 216)
+
+[node name="Collectable18" parent="." instance=ExtResource("1_vu6dt")]
+position = Vector2(408, 264)
+
+[node name="Collectable19" parent="." instance=ExtResource("1_vu6dt")]
+position = Vector2(408, 312)
+
+[node name="Collectable20" parent="." instance=ExtResource("1_vu6dt")]
+position = Vector2(408, 360)
+
+[node name="Collectable21" parent="." instance=ExtResource("1_vu6dt")]
+position = Vector2(456, 216)
+
+[node name="Collectable22" parent="." instance=ExtResource("1_vu6dt")]
+position = Vector2(456, 264)
+
+[node name="Collectable23" parent="." instance=ExtResource("1_vu6dt")]
+position = Vector2(456, 312)
+
+[node name="Collectable24" parent="." instance=ExtResource("1_vu6dt")]
+position = Vector2(456, 360)
+
+[node name="Collectable25" parent="." instance=ExtResource("1_vu6dt")]
+position = Vector2(504, 216)
+
+[node name="Collectable26" parent="." instance=ExtResource("1_vu6dt")]
+position = Vector2(504, 264)
+
+[node name="Collectable27" parent="." instance=ExtResource("1_vu6dt")]
+position = Vector2(504, 312)
+
+[node name="Collectable28" parent="." instance=ExtResource("1_vu6dt")]
+position = Vector2(504, 360)
+
+[node name="Collectable29" parent="." instance=ExtResource("1_vu6dt")]
+position = Vector2(552, 216)
+
+[node name="Collectable30" parent="." instance=ExtResource("1_vu6dt")]
+position = Vector2(552, 264)
+
+[node name="Collectable31" parent="." instance=ExtResource("1_vu6dt")]
+position = Vector2(552, 312)
+
+[node name="Collectable32" parent="." instance=ExtResource("1_vu6dt")]
+position = Vector2(552, 360)
+
+[node name="Collectable33" parent="." instance=ExtResource("1_vu6dt")]
+position = Vector2(600, 216)
+
+[node name="Collectable34" parent="." instance=ExtResource("1_vu6dt")]
+position = Vector2(600, 264)
+
+[node name="Collectable35" parent="." instance=ExtResource("1_vu6dt")]
+position = Vector2(600, 312)
+
+[node name="Collectable36" parent="." instance=ExtResource("1_vu6dt")]
+position = Vector2(600, 360)
+
+[node name="Collectable37" parent="." instance=ExtResource("1_vu6dt")]
+position = Vector2(648, 216)
+
+[node name="Collectable38" parent="." instance=ExtResource("1_vu6dt")]
+position = Vector2(648, 264)
+
+[node name="Collectable39" parent="." instance=ExtResource("1_vu6dt")]
+position = Vector2(648, 312)
+
+[node name="Collectable40" parent="." instance=ExtResource("1_vu6dt")]
+position = Vector2(648, 360)
+
+[node name="Collectable41" parent="." instance=ExtResource("1_vu6dt")]
+position = Vector2(696, 216)
+
+[node name="Collectable42" parent="." instance=ExtResource("1_vu6dt")]
+position = Vector2(696, 264)
+
+[node name="Collectable43" parent="." instance=ExtResource("1_vu6dt")]
+position = Vector2(696, 312)
+
+[node name="Collectable44" parent="." instance=ExtResource("1_vu6dt")]
+position = Vector2(696, 360)
+
+[node name="Collectable45" parent="." instance=ExtResource("1_vu6dt")]
+position = Vector2(744, 216)
+
+[node name="Collectable46" parent="." instance=ExtResource("1_vu6dt")]
+position = Vector2(744, 264)
+
+[node name="Collectable47" parent="." instance=ExtResource("1_vu6dt")]
+position = Vector2(744, 312)
+
+[node name="Collectable48" parent="." instance=ExtResource("1_vu6dt")]
+position = Vector2(744, 360)
+
+[node name="Collectable49" parent="." instance=ExtResource("1_vu6dt")]
+position = Vector2(792, 216)
+
+[node name="Collectable50" parent="." instance=ExtResource("1_vu6dt")]
+position = Vector2(792, 264)
+
+[node name="Collectable51" parent="." instance=ExtResource("1_vu6dt")]
+position = Vector2(792, 312)
+
+[node name="Collectable52" parent="." instance=ExtResource("1_vu6dt")]
+position = Vector2(792, 360)
+
+[node name="Collectable53" parent="." instance=ExtResource("1_vu6dt")]
+position = Vector2(840, 216)
+
+[node name="Collectable54" parent="." instance=ExtResource("1_vu6dt")]
+position = Vector2(840, 264)
+
+[node name="Collectable55" parent="." instance=ExtResource("1_vu6dt")]
+position = Vector2(840, 312)
+
+[node name="Collectable56" parent="." instance=ExtResource("1_vu6dt")]
+position = Vector2(840, 360)
+
+[node name="Collectable57" parent="." instance=ExtResource("1_vu6dt")]
+position = Vector2(888, 216)
+
+[node name="Collectable58" parent="." instance=ExtResource("1_vu6dt")]
+position = Vector2(888, 264)
+
+[node name="Collectable59" parent="." instance=ExtResource("1_vu6dt")]
+position = Vector2(888, 312)
+
+[node name="Collectable60" parent="." instance=ExtResource("1_vu6dt")]
+position = Vector2(888, 360)
+
+[node name="Collectable61" parent="." instance=ExtResource("1_vu6dt")]
+position = Vector2(936, 216)
+
+[node name="Collectable62" parent="." instance=ExtResource("1_vu6dt")]
+position = Vector2(936, 264)
+
+[node name="Collectable63" parent="." instance=ExtResource("1_vu6dt")]
+position = Vector2(936, 312)
+
+[node name="Collectable64" parent="." instance=ExtResource("1_vu6dt")]
+position = Vector2(936, 360)

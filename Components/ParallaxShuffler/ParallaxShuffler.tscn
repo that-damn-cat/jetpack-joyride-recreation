@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://q80cwcuxc71"]
+
+[ext_resource type="Script" uid="uid://7nkh1scehcvb" path="res://Components/ParallaxShuffler/parallax_shuffler.gd" id="1_aotku"]
+
+[node name="Shuffler" type="Parallax2D"]
+scroll_offset = Vector2(-1150.525, 0)
+repeat_size = Vector2(1152, 0)
+autoscroll = Vector2(-100, 0)
+script = ExtResource("1_aotku")
+
+[node name="LeftLayer" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+scale = Vector2(2, 2)
+centered = false
+offset = Vector2(-576, 0)
+
+[node name="RightLayer" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+scale = Vector2(2, 2)
+centered = false
+offset = Vector2(576, 0)

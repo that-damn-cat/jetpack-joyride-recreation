@@ -1,0 +1,71 @@
+[gd_scene load_steps=2 format=3 uid="uid://cb6h8245hau3b"]
+
+[ext_resource type="PackedScene" uid="uid://dylelei5opgrw" path="res://Scenes/Collectable/collectable.tscn" id="1_vervk"]
+
+[node name="BlockPattern" type="Node2D"]
+
+[node name="Collectable" parent="." instance=ExtResource("1_vervk")]
+position = Vector2(264, 168)
+
+[node name="Collectable5" parent="." instance=ExtResource("1_vervk")]
+position = Vector2(312, 168)
+
+[node name="Collectable9" parent="." instance=ExtResource("1_vervk")]
+position = Vector2(360, 168)
+
+[node name="Collectable13" parent="." instance=ExtResource("1_vervk")]
+position = Vector2(408, 216)
+
+[node name="Collectable17" parent="." instance=ExtResource("1_vervk")]
+position = Vector2(456, 216)
+
+[node name="Collectable21" parent="." instance=ExtResource("1_vervk")]
+position = Vector2(504, 264)
+
+[node name="Collectable33" parent="." instance=ExtResource("1_vervk")]
+position = Vector2(600, 408)
+
+[node name="Collectable37" parent="." instance=ExtResource("1_vervk")]
+position = Vector2(648, 456)
+
+[node name="Collectable41" parent="." instance=ExtResource("1_vervk")]
+position = Vector2(696, 456)
+
+[node name="Collectable45" parent="." instance=ExtResource("1_vervk")]
+position = Vector2(744, 504)
+
+[node name="Collectable49" parent="." instance=ExtResource("1_vervk")]
+position = Vector2(792, 504)
+
+[node name="Collectable53" parent="." instance=ExtResource("1_vervk")]
+position = Vector2(840, 504)
+
+[node name="Collectable57" parent="." instance=ExtResource("1_vervk")]
+position = Vector2(552, 312)
+
+[node name="Collectable58" parent="." instance=ExtResource("1_vervk")]
+position = Vector2(552, 360)
+
+[node name="Collectable47" parent="." instance=ExtResource("1_vervk")]
+position = Vector2(888, 552)
+
+[node name="Collectable51" parent="." instance=ExtResource("1_vervk")]
+position = Vector2(936, 552)
+
+[node name="Collectable55" parent="." instance=ExtResource("1_vervk")]
+position = Vector2(984, 552)
+
+[node name="Collectable56" parent="." instance=ExtResource("1_vervk")]
+position = Vector2(1032, 552)
+
+[node name="Collectable48" parent="." instance=ExtResource("1_vervk")]
+position = Vector2(72, 120)
+
+[node name="Collectable52" parent="." instance=ExtResource("1_vervk")]
+position = Vector2(120, 120)
+
+[node name="Collectable59" parent="." instance=ExtResource("1_vervk")]
+position = Vector2(168, 120)
+
+[node name="Collectable60" parent="." instance=ExtResource("1_vervk")]
+position = Vector2(216, 120)

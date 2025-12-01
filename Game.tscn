@@ -1,0 +1,118 @@
+[gd_scene load_steps=21 format=3 uid="uid://d00qgoytghkfw"]
+
+[ext_resource type="Script" uid="uid://dqj11ct12k7wi" path="res://Scenes/BGLayers/parallax_bg.gd" id="1_2vekm"]
+[ext_resource type="Texture2D" uid="uid://8lnrix38nn7x" path="res://Scenes/BGLayers/Assets/DayBG.png" id="1_t88pq"]
+[ext_resource type="Script" uid="uid://bcolhikqyuyki" path="res://game.gd" id="1_yx171"]
+[ext_resource type="PackedScene" uid="uid://cqtko5tvch36" path="res://Scenes/BGLayers/Layer1.tscn" id="2_u44n3"]
+[ext_resource type="PackedScene" uid="uid://f044b8otmeto" path="res://Scenes/CoinPatterns/BlockPattern.tscn" id="3_gwjdr"]
+[ext_resource type="PackedScene" uid="uid://rcph4m8au7qk" path="res://Scenes/BGLayers/Layer2.tscn" id="3_sb48q"]
+[ext_resource type="Texture2D" uid="uid://bfrbrfgxc8gxy" path="res://Scenes/BGLayers/Assets/TrainLayer/1.png" id="3_u44n3"]
+[ext_resource type="PackedScene" uid="uid://c52es1o87yss6" path="res://Scenes/CoinPatterns/DoubleLine.tscn" id="4_0yprl"]
+[ext_resource type="PackedScene" uid="uid://c5s1d14jlnsj1" path="res://Scenes/BGLayers/Layer3.tscn" id="5_t88pq"]
+[ext_resource type="PackedScene" uid="uid://bev6draj7wt2w" path="res://Scenes/CoinPatterns/Squares2.tscn" id="5_wuoie"]
+[ext_resource type="PackedScene" uid="uid://032guv15ao8p" path="res://Scenes/CoinPatterns/Squares.tscn" id="6_bvhbk"]
+[ext_resource type="Texture2D" uid="uid://df7cpledclc8o" path="res://Assets/floor.png" id="6_r0x5m"]
+[ext_resource type="PackedScene" uid="uid://dx3jrp704mfe1" path="res://Scenes/Player/player.tscn" id="7_3mrqo"]
+[ext_resource type="PackedScene" uid="uid://btjp8qthmaach" path="res://Scenes/CoinPatterns/WaveLine2.tscn" id="7_cpsxm"]
+[ext_resource type="PackedScene" uid="uid://cb6h8245hau3b" path="res://Scenes/CoinPatterns/WaveLine.tscn" id="8_hmewc"]
+[ext_resource type="PackedScene" uid="uid://6asbx7w8ieso" path="res://Scenes/ShootableNPC/shootable_npc.tscn" id="9_yx171"]
+[ext_resource type="AudioStream" uid="uid://dchlyqc5gfxta" path="res://Assets/Breezy's Mega Quest - 2 Stage 1.wav" id="11_yhmtn"]
+[ext_resource type="PackedScene" uid="uid://d4deqnfditbxy" path="res://Scenes/Helicopter/helicopter.tscn" id="18_wuoie"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_r0x5m"]
+distance = -622.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_3mrqo"]
+normal = Vector2(0, 1)
+
+[node name="Game" type="Node" groups=["Game"]]
+script = ExtResource("1_yx171")
+shootable_npc = ExtResource("9_yx171")
+min_group_size = 4
+max_group_size = 12
+min_group_spacing = 58.0
+max_group_spacing = 102.0
+min_spawn_seconds = 2.0
+max_spawn_seconds = 7.0
+coin_patterns = Array[PackedScene]([ExtResource("3_gwjdr"), ExtResource("4_0yprl"), ExtResource("5_wuoie"), ExtResource("6_bvhbk"), ExtResource("7_cpsxm"), ExtResource("8_hmewc")])
+
+[node name="ParallaxBG" type="Node" parent="."]
+script = ExtResource("1_2vekm")
+
+[node name="Layer0" type="Sprite2D" parent="ParallaxBG"]
+scale = Vector2(2, 2)
+texture = ExtResource("1_t88pq")
+centered = false
+
+[node name="Layer1" parent="ParallaxBG" instance=ExtResource("2_u44n3")]
+unique_name_in_owner = true
+autoscroll = Vector2(-25, 0)
+
+[node name="Layer2" parent="ParallaxBG" instance=ExtResource("3_sb48q")]
+unique_name_in_owner = true
+autoscroll = Vector2(-50, 0)
+
+[node name="TrainLayer" type="Parallax2D" parent="ParallaxBG"]
+unique_name_in_owner = true
+repeat_size = Vector2(1152, 0)
+autoscroll = Vector2(-250, 0)
+repeat_times = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBG/TrainLayer"]
+scale = Vector2(2, 2)
+texture = ExtResource("3_u44n3")
+centered = false
+
+[node name="Layer3" parent="ParallaxBG" instance=ExtResource("5_t88pq")]
+unique_name_in_owner = true
+visible = false
+autoscroll = Vector2(-90, 0)
+
+[node name="Floor" type="Parallax2D" parent="ParallaxBG"]
+unique_name_in_owner = true
+repeat_size = Vector2(128, 0)
+autoscroll = Vector2(-350, 0)
+repeat_times = 10
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBG/Floor"]
+position = Vector2(-255, -311)
+scale = Vector2(3, 3)
+texture = ExtResource("6_r0x5m")
+centered = false
+offset = Vector2(256, 308)
+
+[node name="Shootables" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Collectibles" type="Node2D" parent="." groups=["CollectibleContainer"]]
+unique_name_in_owner = true
+
+[node name="Bullets" type="Node2D" parent="." groups=["BulletContainer"]]
+
+[node name="PatternOrigin" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(1190, 0)
+
+[node name="Boundaries" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 13
+
+[node name="Floor" type="CollisionShape2D" parent="Boundaries"]
+shape = SubResource("WorldBoundaryShape2D_r0x5m")
+
+[node name="Ceiling" type="CollisionShape2D" parent="Boundaries"]
+shape = SubResource("WorldBoundaryShape2D_3mrqo")
+
+[node name="Player" parent="." instance=ExtResource("7_3mrqo")]
+position = Vector2(100, 587)
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("11_yhmtn")
+volume_db = -2.0
+autoplay = true
+
+[node name="Helicopter" parent="." instance=ExtResource("18_wuoie")]
+position = Vector2(1909, 59)
+
+[connection signal="finished" from="BGM" to="." method="_on_bgm_finished"]
