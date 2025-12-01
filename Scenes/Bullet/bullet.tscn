@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://cvlwvmkx273sv"]
+[gd_scene load_steps=11 format=3 uid="uid://cvlwvmkx273sv"]
 
 [ext_resource type="Texture2D" uid="uid://ffj2fw67sv6l" path="res://Scenes/Bullet/Assets/AutocannonBullet.png" id="1_k7rnr"]
 [ext_resource type="Script" uid="uid://d0mjxgjhrjs6s" path="res://Scenes/Bullet/bullet.gd" id="1_lv0gj"]
+[ext_resource type="Script" uid="uid://x23jddk8rue6" path="res://Components/FreeNotifier2D/FreeNotifier2D.gd" id="2_nt0l2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lv0gj"]
 atlas = ExtResource("1_k7rnr")
@@ -53,6 +54,10 @@ collision_mask = 4
 script = ExtResource("1_lv0gj")
 damage = 1
 metadata/_custom_type_script = "uid://b0t6j7npbw78g"
+
+[node name="FreeNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+script = ExtResource("2_nt0l2")
+metadata/_custom_type_script = "uid://x23jddk8rue6"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 rotation = 1.5707964
