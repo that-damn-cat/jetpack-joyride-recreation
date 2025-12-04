@@ -23,14 +23,15 @@ func enter() -> void:
 	bullet_angle = rad_to_deg(spawn_position.get_angle_to(target.global_position))
 	%AimVisual.visible = true
 
-
+# Track the player for aim_seconds, pointing a visible line at them while doing so.
+# After aim_seconds is elapsed, commit to firing num_shots at that target.
 func update(delta: float) -> void:
 	cur_aim_time += delta
 
 	if cur_aim_time < aim_seconds:
 		var angle_error = abs(bullet_angle - rad_to_deg(spawn_position.get_angle_to(target.global_position))) / bullet_angle
 		if angle_error > 0.01:
-			bullet_angle = lerp(bullet_angle, rad_to_deg(spawn_position.get_angle_to(target.global_position)), clamp(aim_seconds - cur_aim_time, 0.05, 1.0))
+			bullet_angle = lerp(bullet_angle, rad_to_deg(spawn_position.get_angle_to(target.global_position)), 0.2)
 	else:
 		try_shoot()
 

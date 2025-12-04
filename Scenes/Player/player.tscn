@@ -15,7 +15,7 @@
 [ext_resource type="Script" uid="uid://xmr3p4wrraye" path="res://Components/State/State.gd" id="13_06tpx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_joorw"]
-size = Vector2(60, 84)
+size = Vector2(57, 84)
 
 [sub_resource type="Animation" id="Animation_v1qfn"]
 length = 0.001
@@ -181,7 +181,7 @@ collision_mask = 34
 script = ExtResource("1_onrkg")
 
 [node name="PhysicsCollider" type="CollisionShape2D" parent="."]
-position = Vector2(-3, -9)
+position = Vector2(-1.5, -9)
 shape = SubResource("RectangleShape2D_joorw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

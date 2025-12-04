@@ -8,8 +8,9 @@ var speed_tween: Tween
 var current_speed: float = 0.0
 
 func _ready() -> void:
-	seek_speed += Globals.run_speed
 	super()
+	seek_speed += Globals.run_speed
+
 
 func enter() -> void:
 	# Turn on the shape cast to find the player

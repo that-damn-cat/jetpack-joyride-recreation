@@ -12,7 +12,7 @@
 [ext_resource type="Script" uid="uid://dmwlmog2s7ugm" path="res://Scenes/Helicopter/States/seeking.gd" id="10_cuh7m"]
 [ext_resource type="Script" uid="uid://ch07a8qq8dl3g" path="res://Scenes/Helicopter/States/firing.gd" id="10_fdxyx"]
 [ext_resource type="Script" uid="uid://csc2grf8ijxpc" path="res://Scenes/Helicopter/States/entering.gd" id="10_jva8s"]
-[ext_resource type="Script" uid="uid://djcot3ncqj3h8" path="res://Scenes/Helicopter/leaving.gd" id="12_jva8s"]
+[ext_resource type="Script" uid="uid://djcot3ncqj3h8" path="res://Scenes/Helicopter/States/leaving.gd" id="12_jva8s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0mevm"]
 size = Vector2(198, 72)
