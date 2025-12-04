@@ -1,11 +1,18 @@
-[gd_scene load_steps=9 format=3 uid="uid://d4deqnfditbxy"]
+[gd_scene load_steps=16 format=3 uid="uid://d4deqnfditbxy"]
 
 [ext_resource type="Script" uid="uid://cmw31o7woemed" path="res://Scenes/Helicopter/helicopter.gd" id="1_kafbh"]
 [ext_resource type="PackedScene" uid="uid://cvlwvmkx273sv" path="res://Scenes/Bullet/bullet.tscn" id="2_4uwi5"]
-[ext_resource type="Script" uid="uid://x23jddk8rue6" path="res://Components/FreeNotifier2D/FreeNotifier2D.gd" id="3_1a8gy"]
 [ext_resource type="Texture2D" uid="uid://cja5fl1pe5hcy" path="res://icon.svg" id="3_06h7d"]
 [ext_resource type="Script" uid="uid://c648tla2l1a3r" path="res://Components/HealthComponent/HealthComponent.gd" id="4_38253"]
+[ext_resource type="Script" uid="uid://x23jddk8rue6" path="res://Components/FreeNotifier2D/FreeNotifier2D.gd" id="4_fdxyx"]
 [ext_resource type="Script" uid="uid://b0t6j7npbw78g" path="res://Components/Hitbox2D/Hitbox2D.gd" id="5_tsljw"]
+[ext_resource type="AudioStream" uid="uid://bxysdpxynw72d" path="res://Scenes/Helicopter/Assets/chopperAudio.wav" id="7_j7hmr"]
+[ext_resource type="Script" uid="uid://cmcxpoqbj31ch" path="res://Scenes/Helicopter/repeatSFX.gd" id="8_ntbs6"]
+[ext_resource type="Script" uid="uid://cxox1gnu2ypnm" path="res://Scenes/Helicopter/States/state_machine.gd" id="9_cuh7m"]
+[ext_resource type="Script" uid="uid://dmwlmog2s7ugm" path="res://Scenes/Helicopter/States/seeking.gd" id="10_cuh7m"]
+[ext_resource type="Script" uid="uid://ch07a8qq8dl3g" path="res://Scenes/Helicopter/States/firing.gd" id="10_fdxyx"]
+[ext_resource type="Script" uid="uid://csc2grf8ijxpc" path="res://Scenes/Helicopter/States/entering.gd" id="10_jva8s"]
+[ext_resource type="Script" uid="uid://djcot3ncqj3h8" path="res://Scenes/Helicopter/leaving.gd" id="12_jva8s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0mevm"]
 size = Vector2(198, 72)
@@ -13,19 +20,17 @@ size = Vector2(198, 72)
 [sub_resource type="CircleShape2D" id="CircleShape2D_hmewc"]
 radius = 38.58
 
-[node name="Helicopter" type="Area2D" node_paths=PackedStringArray("cooldown_timer", "spawn_position", "health")]
+[node name="Helicopter" type="Area2D" node_paths=PackedStringArray("health")]
 collision_layer = 64
 collision_mask = 8
 script = ExtResource("1_kafbh")
-bullet_scene = ExtResource("2_4uwi5")
-cooldown_timer = NodePath("ShotCooldown")
-spawn_position = NodePath("BulletSpawn")
 health = NodePath("HealthComponent")
 metadata/_custom_type_script = "uid://deho6lgc8wgao"
 
-[node name="FreeNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-script = ExtResource("3_1a8gy")
-metadata/_custom_type_script = "uid://x23jddk8rue6"
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
+shape = SubResource("RectangleShape2D_0mevm")
+debug_color = Color(0.95669776, 9.62615e-08, 0.53913414, 0.41960785)
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("4_38253")
@@ -42,25 +47,73 @@ visible = false
 shape = SubResource("RectangleShape2D_0mevm")
 debug_color = Color(0.95669776, 9.62615e-08, 0.53913414, 0.41960785)
 
+[node name="FreeNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-127, -47, 254, 94)
+script = ExtResource("4_fdxyx")
+metadata/_custom_type_script = "uid://x23jddk8rue6"
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(1.53125, 0.546875)
 texture = ExtResource("3_06h7d")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_0mevm")
-debug_color = Color(0.95669776, 9.62615e-08, 0.53913414, 0.41960785)
 
 [node name="BulletSpawn" type="Marker2D" parent="."]
 position = Vector2(-76.000015, 20)
 
 [node name="ShapeCast2D" type="ShapeCast2D" parent="BulletSpawn"]
 unique_name_in_owner = true
+enabled = false
 shape = SubResource("CircleShape2D_hmewc")
 target_position = Vector2(-538, 533)
 max_results = 1
 
-[node name="ShotCooldown" type="Timer" parent="."]
-wait_time = 0.25
+[node name="AimVisual" type="Line2D" parent="BulletSpawn"]
+unique_name_in_owner = true
+visible = false
+points = PackedVector2Array(0, 0, 0, 0)
+width = 3.0
+default_color = Color(1, 0, 0, 0.19607843)
+
+[node name="FlightSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_j7hmr")
+volume_db = -25.0
+autoplay = true
+script = ExtResource("8_ntbs6")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("entity_root", "flight_sfx", "initial_state")]
+script = ExtResource("9_cuh7m")
+entity_root = NodePath("..")
+flight_sfx = NodePath("../FlightSFX")
+initial_state = NodePath("Entering")
+metadata/_custom_type_script = "uid://bnuyec0xe7i0k"
+
+[node name="Entering" type="Node" parent="StateMachine"]
+script = ExtResource("10_jva8s")
+state_name = "entering"
+metadata/_custom_type_script = "uid://xmr3p4wrraye"
+
+[node name="Seeking" type="Node" parent="StateMachine"]
+script = ExtResource("10_cuh7m")
+state_name = "seeking"
+metadata/_custom_type_script = "uid://xmr3p4wrraye"
+
+[node name="Firing" type="Node" parent="StateMachine" node_paths=PackedStringArray("cooldown_timer", "spawn_position")]
+script = ExtResource("10_fdxyx")
+bullet_scene = ExtResource("2_4uwi5")
+bullet_speed = 1500.0
+cooldown_timer = NodePath("ShotCooldown")
+spawn_position = NodePath("../../BulletSpawn")
+num_shots = 8
+state_name = "firing"
+metadata/_custom_type_script = "uid://xmr3p4wrraye"
+
+[node name="ShotCooldown" type="Timer" parent="StateMachine/Firing"]
+wait_time = 0.1
+
+[node name="Leaving" type="Node" parent="StateMachine"]
+script = ExtResource("12_jva8s")
+state_name = "leaving"
+metadata/_custom_type_script = "uid://xmr3p4wrraye"
 
 [connection signal="damaged" from="HealthComponent" to="." method="_on_health_component_damaged"]
 [connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]
+[connection signal="finished" from="FlightSFX" to="FlightSFX" method="_on_finished"]

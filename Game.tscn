@@ -109,10 +109,9 @@ position = Vector2(100, 587)
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("11_yhmtn")
-volume_db = -2.0
+volume_db = -5.0
 autoplay = true
 
 [node name="Helicopter" parent="." instance=ExtResource("18_wuoie")]
-position = Vector2(1909, 59)
 
 [connection signal="finished" from="BGM" to="." method="_on_bgm_finished"]

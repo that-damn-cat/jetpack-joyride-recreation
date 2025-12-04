@@ -9,7 +9,6 @@ var idle_time: float = 0.0
 var idle_elapsed_time: float = 0.0
 
 func enter() -> void:
-	%HazardDetector.set_deferred("monitoring", true)
 	%AnimationPlayer.play('idle')
 
 	idle_time = randf_range(idle_min_time, idle_max_time)
@@ -25,11 +24,6 @@ func update(delta: float) -> void:
 
 func physics_update(_delta: float) -> void:
 	controlled_node.velocity.x = -Globals.run_speed
-
-
-func exit() -> void:
-	if %HazardDetector:
-		%HazardDetector.set_deferred("monitoring", false)
 
 
 func try_flee():

@@ -7,6 +7,7 @@ extends State
 var flee_speed : float = 0.0
 
 func enter() -> void:
+	%HazardDetector.set_deferred("monitoring", false)
 	%AnimationPlayer.play("run")
 
 	flee_speed = randf_range(min_flee_speed, max_flee_speed)

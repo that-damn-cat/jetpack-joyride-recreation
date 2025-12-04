@@ -10,7 +10,6 @@ var wander_time: float = 0.0
 var wander_elapsed_time: float = 0.0
 
 func enter() -> void:
-	%HazardDetector.set_deferred("monitoring", true)
 	%AnimationPlayer.play('walk')
 
 	wander_speed *= [-1.0, 1.0].pick_random()
@@ -33,11 +32,6 @@ func update(delta: float) -> void:
 
 func physics_update(_delta: float) -> void:
 	controlled_node.velocity.x = -Globals.run_speed + wander_speed
-
-
-func exit() -> void:
-	if %HazardDetector:
-		%HazardDetector.set_deferred("monitoring", false)
 
 
 func try_flee():
