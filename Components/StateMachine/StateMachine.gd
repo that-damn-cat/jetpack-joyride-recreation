@@ -110,7 +110,8 @@ func change_state(new_state_name: String) -> void:
 
 func _on_state_transitioned(this_state: State, new_state_name: String) -> void:
 	if this_state != current_state:
-		push_warning("State transition signal received from a state '%s' which is not the current state!" % this_state.state_name)
+		push_warning("State transition signal received from state '%s' " \
+			+ "which is not the current state!" % this_state.state_name)
 		return
 
 	var new_state: State = get_state(new_state_name)

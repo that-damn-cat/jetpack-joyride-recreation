@@ -28,6 +28,7 @@ func enter() -> void:
 func update(delta: float) -> void:
 	cur_aim_time += delta
 
+	# TODO: This really needs to be reworked...
 	if cur_aim_time < aim_seconds:
 		var angle_error = abs(bullet_angle - rad_to_deg(spawn_position.get_angle_to(target.global_position))) / bullet_angle
 		if angle_error > 0.01:
@@ -38,6 +39,7 @@ func update(delta: float) -> void:
 	if num_shots <= 0:
 		transition_to("leaving")
 
+	# TODO: Clamp length of indicator to floor collision
 	var aim_target: Vector2 = Vector2.from_angle(deg_to_rad(bullet_angle)) * 3000.0
 	%AimVisual.set_point_position(1, aim_target)
 
